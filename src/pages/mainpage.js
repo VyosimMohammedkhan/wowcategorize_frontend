@@ -6,7 +6,6 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import 'ag-grid-community/styles/ag-theme-balham.css';
 import CustomTooltipForMetaData from '../tooltips/metadataTooltip';
 import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
-import 'ag-grid-enterprise'
 import 'ag-grid-community'
 
 
