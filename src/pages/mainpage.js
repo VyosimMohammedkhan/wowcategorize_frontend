@@ -104,7 +104,7 @@ export default function MainPage() {
     const handleSubmit = async () => {
       setSubmitClicked(true);
       try {
-        const response = await fetch('http://localhost:5000/wowCat', {
+        const response = await fetch('https://wowcategorize-server.onrender.com/wowCat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
