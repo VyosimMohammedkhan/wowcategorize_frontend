@@ -86,7 +86,7 @@ export default function Bulkategorize() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch('http://localhost:5000/file', {
+      const response = await fetch('https://wowcategorize-server.onrender.com/file', {
         method: 'POST',
         body: formData,
       });
@@ -129,7 +129,7 @@ export default function Bulkategorize() {
   const handleSubmit = async () => {
     setSubmitClicked(true);
     try {
-      const response = await fetch('http://localhost:5000/bulkCategorize', {
+      const response = await fetch('https://wowcategorize-server.onrender.com/bulkCategorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ export default function Bulkategorize() {
     const site = event.data.Site;
 
     try {
-      const response = await fetch('http://localhost:5000/dbData', {
+      const response = await fetch('https://wowcategorize-server.onrender.com/dbData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
