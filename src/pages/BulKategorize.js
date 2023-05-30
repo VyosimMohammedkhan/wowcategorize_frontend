@@ -206,7 +206,7 @@ export default function Bulkategorize() {
       {loading ? (
         <div id='beforeSubmitDiv'>
 
-          <div>
+          <div style={{display:'flex', justifyContent: 'center'}}>
             <span className='loadingTextbulkpage' style={{ fontFamily: 'Trocchi', fontSize: '25px', fontWeight: 'normal', textAlign: 'center' }}>
               Please Enter a comma-seperated URL list in the Textbox and<br /> Click on submit button to get the data
               <br /> OR <br /> Upload a csv file to bulk categorize
