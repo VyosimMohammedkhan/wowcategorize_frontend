@@ -125,7 +125,7 @@ body{
   height: 4vw;
   /* border-style: ridge; */
   border-top: #4e90f3;
-  border-top-width: 2px;
+  border-top-width: 1px;
   border-top-style: ridge;
   padding: 5px;
 }
@@ -139,7 +139,7 @@ body{
   height: 4vw;
   /* border-style: ridge; */
   border-bottom: #4e90f3;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-bottom-style: ridge;
   padding: 5px;
 }
