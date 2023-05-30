@@ -9,6 +9,7 @@ export default function Navbar(){
         <div >
         <Link to='/'><button className='Pagebutton'>Main Page</button></Link>
         <Link to='/keywords' ><button className='Pagebutton'>Customize keywords</button></Link>
+        <Link to='/bulkategorize' ><button className='Pagebutton'>Bulk categorization</button></Link>
         </div>
   </nav>
   

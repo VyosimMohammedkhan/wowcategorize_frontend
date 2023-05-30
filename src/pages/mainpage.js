@@ -36,7 +36,7 @@ export default function MainPage() {
       { field: 'Portal', width: 100 },
       { field: 'Legal', width: 90 },
       { field: 'Blog', width: 90 },
-      { field: 'keywordFound', tooltipField: 'keywordFound' ,cellStyle: { textAlign: "left" }},
+      { field: 'keywordFound', tooltipField: 'keywordFound' ,cellStyle: { textAlign: "left" } , rowGroup:true},
     ];
   
     const matchCountColumnDefs = [
@@ -104,7 +104,7 @@ export default function MainPage() {
     const handleSubmit = async () => {
       setSubmitClicked(true);
       try {
-        const response = await fetch('https://wowcategorize-server.onrender.com/wowCat', {
+        const response = await fetch('http://localhost:5000/wowCat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -138,6 +138,7 @@ export default function MainPage() {
       return dataArray;
     }
   
+    const groupDisplayType = 'groupRows';
 
     return (
       <div style={{ backgroundColor: '#d7d8da', height:'92vh' }}>
@@ -202,6 +203,7 @@ export default function MainPage() {
                     defaultColDef={defaultColDefForCategories}
                     tooltipShowDelay={0}
                    columnHoverHighlight={true}
+                   groupDisplayType={groupDisplayType}
                   />
                 </div>
                 <div className="ag-theme-alpine right" style={{ width: '100%', height: '65vh' }}>
