@@ -11,7 +11,7 @@ const MainProgressStatus = () => {
     eventSource.onmessage = (event) => {
       setStatus(event.data);
 
-      if (event.data == 'All tasks Complete') {
+      if (event.data === 'All tasks Complete') {
         eventSource.close();
         setStatus("All tasks Complete")
       }

@@ -7,7 +7,7 @@ import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
 import ProgressStatus from '../components/loadingcomponent';
 import SingleProgressStatus from '../components/singleLoadingComponent';
 import GetURI from '../components/URI';
-let uri=GetURI();
+let uri = GetURI();
 
 export default function Bulkategorize() {
 
@@ -38,6 +38,7 @@ export default function Bulkategorize() {
   }), []);
 
   const matchCountColumnDefs = [
+    { headerName: "Row", valueGetter: "node.rowIndex + 1", pinned: 'left', width: 70},
     { field: 'Site', pinned: 'left' },
     { field: 'About', width: 100, headerClass: 'custom-header-class' },
     { field: 'Contact', width: 120, headerClass: 'custom-header-class' },
@@ -53,7 +54,7 @@ export default function Bulkategorize() {
     { field: 'Portal', width: 100, headerClass: 'custom-header-class' },
     { field: 'Legal', width: 100, headerClass: 'custom-header-class' },
     { field: 'Blog', width: 100, headerClass: 'custom-header-class' },
-    { field: 'Exclude', width: 100, headerClass: 'custom-header-class'}
+    { field: 'Exclude', width: 100, headerClass: 'custom-header-class' }
   ];
 
   const categoryColumnDefs = [
@@ -74,7 +75,7 @@ export default function Bulkategorize() {
     { field: 'Portal', width: 100 },
     { field: 'Legal', width: 90 },
     { field: 'Blog', width: 90 },
-    { field: 'keywordFound', tooltipField: 'keywordFound', cellStyle: { textAlign: "left" }},
+    { field: 'keywordFound', tooltipField: 'keywordFound', cellStyle: { textAlign: "left" } },
   ];
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -91,7 +92,7 @@ export default function Bulkategorize() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch(uri+'/file', {
+      const response = await fetch(uri + '/file', {
         method: 'POST',
         body: formData,
       });
@@ -134,7 +135,7 @@ export default function Bulkategorize() {
   const handleSubmit = async () => {
     setSubmitClicked(true);
     try {
-      const response = await fetch(uri+'/bulkCategorize', {
+      const response = await fetch(uri + '/bulkCategorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -172,7 +173,7 @@ export default function Bulkategorize() {
     const site = event.data.Site;
 
     try {
-      const response = await fetch(uri+'/dbData', {
+      const response = await fetch(uri + '/dbData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -196,8 +197,8 @@ export default function Bulkategorize() {
     <div>
       <nav className="navbar-bulk">
         <div className="navbar_top">
-          <label htmlFor="searchBox" style={{ marginRight: '15px', color: '#0b1012' }}>Enter comma seperated list of urls to categorize </label>
-          <input id="searchBox" type="text" size='95' placeholder="http://siteone.com, http://sitetwo.com, http://sitethree.com, http://sitefour.com, http://sitefive.com, http://sitesix.com, ............." value={inputValue} className="navbar__search" onChange={handleInputChange} onKeyDown={handleKeypress} />
+          <label htmlFor="searchBox" style={{ marginRight: '15px', color: '#0b1012' }}>Enter a list of urls to categorize </label>
+          <input id="searchBox" type="text" size='95' placeholder="Enter a list of urls or domains to get categorization details for them" value={inputValue} className="navbar__search" onChange={handleInputChange} onKeyDown={handleKeypress} />
           <button type="submit" className="navbar__button" onClick={handleSubmit}>Submit</button>
         </div>
       </nav>
@@ -207,37 +208,34 @@ export default function Bulkategorize() {
         <button type="submit" className="navbar__button" onClick={handleFileSubmit}>Submit</button>
       </div>
 
-
       {loading ? (
         <div id='beforeSubmitDiv'>
-
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {submitClicked ? (<div></div>): (<div style={{ display: 'flex', justifyContent: 'center' }}>
             <span className='loadingTextbulkpage' style={{ fontFamily: 'Trocchi', fontSize: '25px', fontWeight: 'normal', textAlign: 'center' }}>
               Please Enter a comma-seperated URL list in the Textbox and<br /> Click on submit button to get the data
               <br /> OR <br /> Upload a csv file to bulk categorize
             </span>
           </div>
-
+)}   
           <div>
             {submitClicked ? (
-               <div>
-               <div><span className="ag-custom-loading"></span></div>
-               <div><ProgressStatus/></div>
-               <div><SingleProgressStatus/></div>
-             </div>
+              <div>
+                <div><span className="ag-custom-loading"></span></div>
+                <div><ProgressStatus /></div>
+                <div><SingleProgressStatus /></div>
+              </div>
             ) : (
               <div></div>
             )}
           </div>
         </div>
-
       ) : (
         <div id='afterSubmitDiv'>
           {submitClicked ? (
             <div>
               <div><span className="ag-custom-loading"></span></div>
-              <div><ProgressStatus/></div>
-              <div><SingleProgressStatus/></div>
+              <div><ProgressStatus /></div>
+              <div><SingleProgressStatus /></div>
             </div>
           ) : (
             <div className='mycontainer'>
