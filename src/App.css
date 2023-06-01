@@ -1,31 +1,30 @@
 .custom-tooltip1 {
-  width: 100%;
   height: 45px;
   border: 1px solid cornflowerblue;
-  overflow:auto;
-}
-.custom-tooltip1 p {
-  margin: 5px;
-  white-space:nowrap;
+  overflow: auto;
+  white-space: nowrap;
   font-weight: bold;
   text-align: left;
-  
 }
 
 .custom-tooltip {
-  width: 100%;
   height: 70px;
   border: 1px solid cornflowerblue;
-  overflow:auto;
-}
-
-.custom-tooltip p {
-  margin: 5px;
+  overflow: auto;
   white-space: nowrap;
+  font-weight: bold;
 }
 
-.custom-tooltip p {
-  font-weight: bold;
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
 }
 
 body{
@@ -64,39 +63,6 @@ body{
   padding: 5px;
 }
 
-.ag-custom-loading {
-  height:50%;
-  width: 50%;
-  background-image: url(../public/loading.gif);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 30%;
-  position: absolute;
-  top: 5%;
-  left:25%
-}
-
-.loadingText {
-  position: absolute;
-  padding-top: 150px; 
-  padding-left:30%;
-  color: rgb(39, 26, 26);
-}
-
-.loadingTextbulkpage{
-  position: absolute;
-  padding-top: 150px; 
-  color: rgb(39, 26, 26);
-}
-
-#afterSubmitDiv{
-  z-index: 10;
-}
-
-#beforeSubmitDiv{
-  z-index: 100;
-}
-
 .navbar-custom {
   display: flex;
   justify-content: space-between;
@@ -126,20 +92,6 @@ body{
   border-top: #4e90f3;
   border-top-width: 1px;
   border-top-style: ridge;
-  padding: 5px;
-}
-
-.fileuploadbar{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  background-color: #f1f1f1;
-  height: 4vw;
-  /* border-style: ridge; */
-  border-bottom: #4e90f3;
-  border-bottom-width: 1px;
-  border-bottom-style: ridge;
   padding: 5px;
 }
 
@@ -201,3 +153,48 @@ font-family: Trocchi;
   font-weight: bold;
 }
 
+.ag-custom-loading {
+  height:50%;
+  width: 50%;
+  background-image: url(../public/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 30%;
+  position: absolute;
+  top: 5%;
+  left:25%
+}
+
+.loadingText {
+  position: absolute;
+  padding-top: 150px; 
+  padding-left:30%;
+  color: rgb(39, 26, 26);
+}
+
+.loadingTextbulkpage{
+  position: absolute;
+  padding-top: 150px; 
+  color: rgb(39, 26, 26);
+}
+
+#afterSubmitDiv{
+  z-index: 10;
+}
+
+#beforeSubmitDiv{
+  z-index: 100;
+}
+.fileuploadbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #f1f1f1;
+  height: 4vw;
+  /* border-style: ridge; */
+  border-bottom: #4e90f3;
+  border-bottom-width: 1px;
+  border-bottom-style: ridge;
+  padding: 5px;
+}

@@ -8,19 +8,19 @@ import '../App.css';
     );
   
     return (
-      <div
-        className="custom-tooltip"
-        style={{ backgroundColor: 'white', color: 'black' }}
+      <div className="container">
+      <div className="custom-tooltip" style={{ backgroundColor: 'white', color: 'black' }}
       >
-        <p>
+        <p className='mb-0'>
           <span>URL: </span>{data.HREF}
         </p>
-        <p>
+        <p className='mb-0'>
           <span>linkText: </span> {data.linkText}
         </p>
-        <p>
+        <p className='mb-0'>
           <span>keywordFound: </span> {data.keywordFound}
         </p>
+      </div>
       </div>
     );
   };

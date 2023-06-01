@@ -6,7 +6,11 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import 'ag-grid-community/styles/ag-theme-balham.css';
 import CustomTooltipForMetaData from '../tooltips/metadataTooltip';
 import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
+import MainProgressStatus from '../components/MainPageProgress';
 import 'ag-grid-community'
+import GetURI from '../components/URI';
+let uri=GetURI();
+
 
 
 export default function MainPage() {
@@ -36,7 +40,7 @@ export default function MainPage() {
       { field: 'Portal', width: 100 },
       { field: 'Legal', width: 90 },
       { field: 'Blog', width: 90 },
-      { field: 'keywordFound', tooltipField: 'keywordFound' ,cellStyle: { textAlign: "left" } , rowGroup:true},
+      { field: 'keywordFound', tooltipField: 'keywordFound' ,cellStyle: { textAlign: "left" } },
     ];
   
     const matchCountColumnDefs = [
@@ -104,7 +108,7 @@ export default function MainPage() {
     const handleSubmit = async () => {
       setSubmitClicked(true);
       try {
-        const response = await fetch('https://wowcategorize-server.onrender.com/wowCat', {
+        const response = await fetch(uri+'/wowCat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -138,7 +142,6 @@ export default function MainPage() {
       return dataArray;
     }
   
-    const groupDisplayType = 'groupRows';
 
     return (
       <div style={{ backgroundColor: '#d7d8da', height:'92vh' }}>
@@ -165,7 +168,10 @@ export default function MainPage() {
   
           <div>
             {submitClicked ? (
+              <div>
               <div><span className="ag-custom-loading"></span></div>
+              <div><MainProgressStatus/></div>
+              </div>
             ) : (
               <div></div>
             )}
@@ -175,7 +181,10 @@ export default function MainPage() {
       ) : (
         <div id='afterSubmitDiv'>
           {submitClicked ? (
-            <div><span className="ag-custom-loading"></span></div>
+                  <div>
+                  <div><span className="ag-custom-loading"></span></div>
+                  <div><MainProgressStatus/></div>
+                  </div>
           ) : (
             <div className='mycontainer'>
               <div className='top'>
@@ -203,7 +212,6 @@ export default function MainPage() {
                     defaultColDef={defaultColDefForCategories}
                     tooltipShowDelay={0}
                    columnHoverHighlight={true}
-                   groupDisplayType={groupDisplayType}
                   />
                 </div>
                 <div className="ag-theme-alpine right" style={{ width: '100%', height: '65vh' }}>

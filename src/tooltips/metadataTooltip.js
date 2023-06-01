@@ -8,16 +8,18 @@ import '../App.css';
     );
   
     return (
+      <div className="container">
       <div
         className="custom-tooltip1"
         style={{ backgroundColor: 'white', color: 'black' }}
       >
-        <p>
+        <p className='mb-0'>
           <span>metaTag : </span>{data.metaTagName}
         </p>
-        <p>
+        <p className='mb-0'>
           <span>Value : </span> {data.value}
         </p>
+      </div>
       </div>
     );
   };

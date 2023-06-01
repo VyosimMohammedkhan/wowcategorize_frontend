@@ -4,6 +4,10 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import 'ag-grid-community'
 import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
+import ProgressStatus from '../components/loadingcomponent';
+import SingleProgressStatus from '../components/singleLoadingComponent';
+import GetURI from '../components/URI';
+let uri=GetURI();
 
 export default function Bulkategorize() {
 
@@ -49,6 +53,7 @@ export default function Bulkategorize() {
     { field: 'Portal', width: 100, headerClass: 'custom-header-class' },
     { field: 'Legal', width: 100, headerClass: 'custom-header-class' },
     { field: 'Blog', width: 100, headerClass: 'custom-header-class' },
+    { field: 'Exclude', width: 100, headerClass: 'custom-header-class'}
   ];
 
   const categoryColumnDefs = [
@@ -69,7 +74,7 @@ export default function Bulkategorize() {
     { field: 'Portal', width: 100 },
     { field: 'Legal', width: 90 },
     { field: 'Blog', width: 90 },
-    { field: 'keywordFound', tooltipField: 'keywordFound', cellStyle: { textAlign: "left" }, rowGroup: true },
+    { field: 'keywordFound', tooltipField: 'keywordFound', cellStyle: { textAlign: "left" }},
   ];
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -86,7 +91,7 @@ export default function Bulkategorize() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch('https://wowcategorize-server.onrender.com/file', {
+      const response = await fetch(uri+'/file', {
         method: 'POST',
         body: formData,
       });
@@ -129,7 +134,7 @@ export default function Bulkategorize() {
   const handleSubmit = async () => {
     setSubmitClicked(true);
     try {
-      const response = await fetch('https://wowcategorize-server.onrender.com/bulkCategorize', {
+      const response = await fetch(uri+'/bulkCategorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +172,7 @@ export default function Bulkategorize() {
     const site = event.data.Site;
 
     try {
-      const response = await fetch('https://wowcategorize-server.onrender.com/dbData', {
+      const response = await fetch(uri+'/dbData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -206,7 +211,7 @@ export default function Bulkategorize() {
       {loading ? (
         <div id='beforeSubmitDiv'>
 
-          <div style={{display:'flex', justifyContent: 'center'}}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <span className='loadingTextbulkpage' style={{ fontFamily: 'Trocchi', fontSize: '25px', fontWeight: 'normal', textAlign: 'center' }}>
               Please Enter a comma-seperated URL list in the Textbox and<br /> Click on submit button to get the data
               <br /> OR <br /> Upload a csv file to bulk categorize
@@ -225,7 +230,11 @@ export default function Bulkategorize() {
       ) : (
         <div id='afterSubmitDiv'>
           {submitClicked ? (
-            <div><span className="ag-custom-loading"></span></div>
+            <div>
+              <div><span className="ag-custom-loading"></span></div>
+              <div><ProgressStatus/></div>
+              <div><SingleProgressStatus/></div>
+            </div>
           ) : (
             <div className='mycontainer'>
               <div className='top'>
@@ -258,9 +267,11 @@ export default function Bulkategorize() {
                 </div>
               </div>) : (
 
-                <div><span className='loadingTextbulkpage' style={{ fontFamily: 'Trocchi', fontSize: '25px', fontWeight: 'normal', textAlign: 'center' }}>
-                  Please select a Row to display details
-                </span></div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <span className='loadingTextbulkpage' style={{ fontFamily: 'Trocchi', fontSize: '25px', fontWeight: 'normal', textAlign: 'center' }}>
+                    Please select a Row to display details
+                  </span>
+                </div>
               )
               }
 

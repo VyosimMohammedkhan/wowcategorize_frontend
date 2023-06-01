@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import GetURI from '../components/URI';
 let uri=GetURI();
 
-const ProgressStatus = () => {
-  const [status, setStatus] = useState('initiating ...');
+const SingleProgressStatus = () => {
+  const [status, setStatus] = useState('starting task ... ');
 
   useEffect(() => {
-    const eventSource = new EventSource(uri+'/status');
+    const eventSource = new EventSource(uri+'/progress');
 
     eventSource.onmessage = (event) => {
       setStatus(event.data);
 
-      if (event.data == '0') {
+      if (event.data == 'All tasks Complete') {
         eventSource.close();
-        setStatus("All tasks complete")
+        setStatus("All tasks Complete")
       }
     };
 
@@ -24,11 +24,11 @@ const ProgressStatus = () => {
 
   return (
     <div style={{ display: 'flex', textAlign:'center', marginTop:'150px', flexDirection:'column'}}>
-      <div><h1>Please wait ... task is in progress</h1></div>
+      {/* <div><h1>Please wait ... task is in progress</h1></div> */}
       <p style={{fontSize:'30px', color:'#7ebee0'}}>{status}</p>
     </div>
   );
 };
 
-export default ProgressStatus;
+export default SingleProgressStatus;
 
