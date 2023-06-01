@@ -220,7 +220,11 @@ export default function Bulkategorize() {
 
           <div>
             {submitClicked ? (
-              <div><span className="ag-custom-loading"></span></div>
+               <div>
+               <div><span className="ag-custom-loading"></span></div>
+               <div><ProgressStatus/></div>
+               <div><SingleProgressStatus/></div>
+             </div>
             ) : (
               <div></div>
             )}
