@@ -6,8 +6,7 @@ import 'ag-grid-community'
 import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
 import ProgressStatus from '../components/loadingcomponent';
 import SingleProgressStatus from '../components/singleLoadingComponent';
-import GetURI from '../components/URI';
-let uri = GetURI();
+
 
 export default function Bulkategorize() {
 
@@ -92,7 +91,7 @@ export default function Bulkategorize() {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await fetch(uri + '/file', {
+      const response = await fetch('/file', {
         method: 'POST',
         body: formData,
       });
@@ -135,7 +134,7 @@ export default function Bulkategorize() {
   const handleSubmit = async () => {
     setSubmitClicked(true);
     try {
-      const response = await fetch(uri + '/bulkCategorize', {
+      const response = await fetch('/bulkCategorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -173,7 +172,7 @@ export default function Bulkategorize() {
     const site = event.data.Site;
 
     try {
-      const response = await fetch(uri + '/dbData', {
+      const response = await fetch('/dbData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

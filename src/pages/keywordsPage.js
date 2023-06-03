@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import GetURI from '../components/URI';
-let uri=GetURI();
 export default function KeywordsPage() {
   const [tableData, setTableData] = useState([]);
   const [isDataUpdated, setIsDataUpdated] = useState(false);
@@ -8,7 +6,7 @@ export default function KeywordsPage() {
 
   useEffect(() => {
     // Fetch data from the API
-    fetch(uri+'/keywords')
+    fetch('/keywords')
       .then(response => response.json())
       .then(data => {
         // Convert the JSON object to an array of key-value pairs
@@ -51,7 +49,7 @@ export default function KeywordsPage() {
     });
   
     // Post the updated data to the API
-    fetch(uri+'/keywords', {
+    fetch('/keywords', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

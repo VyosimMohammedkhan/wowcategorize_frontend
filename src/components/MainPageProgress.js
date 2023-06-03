@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import GetURI from '../components/URI';
-let uri=GetURI();
 
 const MainProgressStatus = () => {
   const [status, setStatus] = useState('starting task ... ');
 
   useEffect(() => {
-    const eventSource = new EventSource(uri+'/mainPageProgress');
+    const eventSource = new EventSource('/mainPageProgress');
 
     eventSource.onmessage = (event) => {
       setStatus(event.data);
