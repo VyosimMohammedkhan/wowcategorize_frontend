@@ -1,4 +1,4 @@
-const URI='https://wowcategorize-server.onrender.com';
+const URI='http://localhost:5000';
 
 function GetURI(){
     return URI;
