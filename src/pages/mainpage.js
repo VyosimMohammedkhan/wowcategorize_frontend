@@ -8,7 +8,8 @@ import CustomTooltipForMetaData from '../tooltips/metadataTooltip';
 import CustomTooltipForCategories from '../tooltips/categoriesTooltip'
 import MainProgressStatus from '../components/MainPageProgress';
 import 'ag-grid-community'
-
+import GetURI from '../components/URI';
+let uri=GetURI();
 
 
 
@@ -107,7 +108,7 @@ export default function MainPage() {
     const handleSubmit = async () => {
       setSubmitClicked(true);
       try {
-        const response = await fetch('/wowCat', {
+        const response = await fetch(uri+'/wowCat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
