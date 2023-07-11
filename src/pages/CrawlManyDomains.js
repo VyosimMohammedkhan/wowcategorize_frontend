@@ -580,7 +580,7 @@ export default function CrawlMany() {
         <div></div>
       )}</div>
 
-      {rowClicked && rowClickLoading ? (<div><span className="ag-custom-loading2"></span></div>) : (<></>)}
+      {rowClicked && rowClickLoading ? (<div style={{display:'flex', justifyContent:'center'}}><span className="ag-custom-loading2"></span></div>) : (<></>)}
 
       {!loading && !submitClicked && !rowClicked && !rowClickLoading ? (
         <div className="position-absolute start-50 translate-middle" style={{ top: '70%' }}>
