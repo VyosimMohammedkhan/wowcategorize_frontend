@@ -1,20 +1,20 @@
 import Navbar from "./Navbar";
-import MainPage from "./pages/mainpage";
+import CrawlOne from "./pages/CrawlSingleDomain";
 import KeywordsPage from './pages/keywordsPage';
-import Bulkategorize from "./pages/BulKategorize";
+import CrawlMany from "./pages/CrawlManyDomains";
 import {Route, Routes} from 'react-router-dom'
 function App() {
 
   return (
     <div >
     <Navbar/>
-    <div>
+    {/* <div>
     <Routes>
-<Route path="/" element={<MainPage />}/>
+<Route path="/" element={<CrawlMany />}/>
 <Route path="/keywords" element={<KeywordsPage />} />
-<Route path="/bulkategorize" element={<Bulkategorize />} />
+<Route path="/crawlSingleUrl" element={<CrawlOne />} />
     </Routes>
-    </div>
+    </div> */}
     </div>
 
   );
